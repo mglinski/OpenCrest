@@ -183,4 +183,14 @@ class Async
     {
         return self::$objects[$base];
     }
+
+    /**
+     * @param string $base
+     * @return array
+     */
+    public static function clean($base = "public")
+    {
+        self::$objects[$base] = self::$requests[$base] = self::$promise[$base] = [];
+        self::$responses[$base] = ['success' => [], 'rejected' => []];
+    }
 }
