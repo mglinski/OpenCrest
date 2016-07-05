@@ -111,14 +111,15 @@ class Factory implements FactoryInterface
                 $item = $item["effect"];
             }
 
+
             // Create new object
-            $newItem = $this->create(clone $object, $item);
+            $newItem = (object)$item;
 
             // In rare cases, you can get object listing through one endpoint, but get specific object through another
             // This is the case for regions->buy/sellOrders where you get list of orders, but you access those orders
-            if ($object->getAttribute("listUri")) {
-                $newItem->setAttribute("uri", $object->getAttribute("listUri"));
-            }
+//            if ($object->getAttribute("listUri")) {
+//                $newItem->setAttribute("uri", $object->getAttribute("listUri"));
+//            }
 
             // Push item to items
             array_push($values['items'], $newItem);
